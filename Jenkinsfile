@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "amazon-app"
-        CONTAINER_NAME = "amazon-test8"
+        CONTAINER_NAME = "amazon-test9"
     }
     stages {
         stage('Checkout') {
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Run container in detached mode
-                    sh "docker run -d --name $CONTAINER_NAME -p 8085:8080 $IMAGE_NAME"
+                    sh "docker run -d --name $CONTAINER_NAME -p 9018:8080 $IMAGE_NAME"
                     // Wait for a few seconds to let Tomcat start
                     sleep 20
                     // Check if container is running (basic health check)
