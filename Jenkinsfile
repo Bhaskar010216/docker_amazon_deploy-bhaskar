@@ -22,7 +22,7 @@ pipeline {
                     sh "docker rm -f $CONTAINER_NAME || true"
                     
                     // Run container in detached mode
-                    sh "docker run -d --name $CONTAINER_NAME -p 8085:8080 $IMAGE_NAME"
+                    sh "docker run -d --name $CONTAINER_NAME -p 8093:8080 $IMAGE_NAME"
                     
                     // Wait for a few seconds to let Tomcat start
                     sleep 20
