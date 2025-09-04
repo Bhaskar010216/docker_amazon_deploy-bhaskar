@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "amazon-app"
-        CONTAINER_NAME = "amazon-chhotu"
+         TEST_CONTAINER = "amazon-rahul-test"
+    DEPLOY_CONTAINER = "amazon-rahul"
     }
     stages {
         stage('Checkout') {
@@ -46,7 +47,7 @@ pipeline {
                     sh "docker rm -f $CONTAINER_NAME || true"
                     
                     // Run container detached for deployment on fixed port
-                    sh "docker run -d --name $CONTAINER_NAME -p 9012:8080 $IMAGE_NAME"
+                    sh "docker run -d --name $CONTAINER_NAME -p 9014:8080 $IMAGE_NAME"
                 }
             }
         }
