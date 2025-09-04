@@ -33,9 +33,9 @@ pipeline {
                         error "Container failed to start"
                     }
                     
-                    // Stop and remove test container after check
-                    sh "docker stop $CONTAINER_NAME"
-                    sh "docker rm -f $CONTAINER_NAME"
+                    // Stop and remove test container after check (ignore errors)
+                    sh "docker stop $CONTAINER_NAME || true"
+                    sh "docker rm -f $CONTAINER_NAME || true"
                 }
             }
         }
@@ -52,5 +52,3 @@ pipeline {
         }
     }
 }
-
-
