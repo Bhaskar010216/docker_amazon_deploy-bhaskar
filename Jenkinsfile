@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "amazon-app"
-        CONTAINER_NAME = "amazon-ravi"
+        CONTAINER_NAME = "amazon-binay"
     }
     stages {
         stage('Checkout') {
@@ -21,8 +21,8 @@ pipeline {
                     // Remove if any existing container with the same name
                     sh "docker rm -f $CONTAINER_NAME || true"
                     
-                    // Run container in detached mode
-                    sh "docker run -d --name $CONTAINER_NAME -p 8093:8080 $IMAGE_NAME"
+                    // Run container in detached mode with auto port assignment
+                    sh "docker run -d --name $CONTAINER_NAME -p 0:8080 $IMAGE_NAME"
                     
                     // Wait for a few seconds to let Tomcat start
                     sleep 20
@@ -45,11 +45,12 @@ pipeline {
                     // Ensure no container with same name exists
                     sh "docker rm -f $CONTAINER_NAME || true"
                     
-                    // Run container detached for deployment
+                    // Run container detached for deployment on fixed port
                     sh "docker run -d --name $CONTAINER_NAME -p 9004:8080 $IMAGE_NAME"
                 }
             }
         }
     }
 }
+
 
