@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "amazon-app"
-        CONTAINER_NAME = "amazon-raj6"
+        CONTAINER_NAME = "amazon-test"
     }
     stages {
         stage('Checkout') {
