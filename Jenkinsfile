@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         IMAGE_NAME = "amazon-app"
-        CONTAINER_NAME = "amazon-rajdaha"
+        CONTAINER_NAME = "amazon-pakur"
     }
     stages {
         stage('Checkout') {
@@ -46,7 +46,7 @@ pipeline {
                     sh "docker rm -f $CONTAINER_NAME || true"
                     
                     // Run container detached for deployment
-                    sh "docker run -d --name $CONTAINER_NAME -p 8085:8080 $IMAGE_NAME"
+                    sh "docker run -d --name $CONTAINER_NAME -p 9002:8080 $IMAGE_NAME"
                 }
             }
         }
